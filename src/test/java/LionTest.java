@@ -6,7 +6,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
 public class LionTest {
 
     @Test
