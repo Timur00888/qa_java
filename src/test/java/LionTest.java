@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class LionTest {
@@ -15,21 +15,20 @@ public class LionTest {
         when(mockFeline.getKittens()).thenReturn(2);
 
         Lion lion = new Lion("Самец", mockFeline);
-        int kittens = lion.getKittens();
 
-        assertEquals(2, kittens);
+        assertEquals(2, lion.getKittens());
     }
 
     @Test
     public void testGetFood() throws Exception {
         Feline mockFeline = mock(Feline.class);
-        when(mockFeline.getFood("Хищник")).thenReturn(List.of("Мясо"));
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+
+        when(mockFeline.getFood("Хищник")).thenReturn(expectedFood);
 
         Lion lion = new Lion("Самец", mockFeline);
-        List<String> food = lion.getFood();
+        List<String> actualFood = lion.getFood();
 
-        assertNotNull(food);
-        assertFalse(food.isEmpty());
-        assertEquals("Мясо", food.get(0));
+        assertEquals(expectedFood, actualFood);
     }
 }
